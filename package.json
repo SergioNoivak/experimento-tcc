@@ -95,5 +95,10 @@
   },
   "engines": {
     "node": ">=10.13.0"
+  },
+  "dependencies": {
+    "@angular/animations": "10.1.2",
+    "@types/halfmoon": "1.0.0",
+    "halfmoon": "1.1.0"
   }
 }

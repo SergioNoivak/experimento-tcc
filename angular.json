@@ -21,6 +21,8 @@
             ],
             "styles": [
               "src/styles.scss"
+
+
             ],
             "scripts": [],
             "customWebpackConfig": {
@@ -166,5 +168,8 @@
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "analytics": "9c863543-e479-4cda-a81d-2430f29420f1"
   }
 }

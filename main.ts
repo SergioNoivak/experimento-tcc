@@ -10,13 +10,19 @@ function createWindow(): BrowserWindow {
 
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
+  const nativeImage = require('electron').nativeImage;
+
+  var image = nativeImage.createFromPath(__dirname + '/src/assets/icons/icon.png');
+  image.setTemplateImage(true);
 
   // Create the browser window.
   win = new BrowserWindow({
+    icon: image,
     x: 0,
     y: 0,
     width: size.width,
     height: size.height,
+    frame: false,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
