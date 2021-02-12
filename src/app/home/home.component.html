@@ -34,7 +34,7 @@ Rede de Autômato Celular
 </div>
 
 <div class="tela gridTela">
-<div  class="menuLateral" style="padding-left: 5px;padding-right: 5px;">
+<div *ngIf="activeTab =='Comparação' || activeTab =='Inspeção'" class="menuLateral" style="padding-left: 5px;padding-right: 5px;">
 <!-- <div *ngFor="let item of [1,2,3]">
 
   <img src="../../assets/icons/favicon.png" alt="" class="" width="32" height="32">
@@ -90,7 +90,6 @@ Rede de Autômato Celular
 
 
 <!-- Multi-select box -->
-<label for="multi-select-1">Select one or more colors</label>
 
 
 <!-- Select box -->
@@ -161,12 +160,12 @@ Rede de Autômato Celular
 
   </div>
   <div class="gridExperimentos" >
-    <app-cartao-experimento [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado"  (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[6]" [identificador]="'7'"></app-cartao-experimento>
-    <app-cartao-experimento [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[7]" [identificador]="'8'"></app-cartao-experimento>
-    <app-cartao-experimento [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[8]" [identificador]="'9'"></app-cartao-experimento>
-    <app-cartao-experimento [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[9]" [identificador]="'10'"></app-cartao-experimento>
-    <app-cartao-experimento [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[10]" [identificador]="'11'"></app-cartao-experimento>
-    <app-cartao-experimento [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[11]" [identificador]="'12'"></app-cartao-experimento>
+    <app-cartao-experimento [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado"  (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[6]" [identificador]="'7'"></app-cartao-experimento>
+    <app-cartao-experimento [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[7]" [identificador]="'8'"></app-cartao-experimento>
+    <app-cartao-experimento [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[8]" [identificador]="'9'"></app-cartao-experimento>
+    <app-cartao-experimento [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[9]" [identificador]="'10'"></app-cartao-experimento>
+    <app-cartao-experimento [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[10]" [identificador]="'11'"></app-cartao-experimento>
+    <app-cartao-experimento [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[11]" [identificador]="'12'"></app-cartao-experimento>
 
   </div>
 </div>
@@ -196,6 +195,10 @@ Rede de Autômato Celular
 </div>
 
 
+<div *ngIf="activeTab=='Relatórios'" class="painel">
+<app-relatorios></app-relatorios>
+
+</div>
 
 </div>
 

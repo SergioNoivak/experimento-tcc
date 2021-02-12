@@ -7,12 +7,9 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import {
-  Regra
-} from '../../core/classes/Regra';
-import {
-  ControlContainer
-} from '@angular/forms';
+import {Regra} from '../../core/classes/Regra';
+import {RedeSmallworld} from '../../core/classes/RedeSmallworld';
+
 
 @Component({
   selector: 'app-cartao-experimento',
@@ -24,32 +21,25 @@ export class CartaoExperimentoComponent implements OnInit {
   tamanho2: any = new Array(40)
   @Input('identificador')
   identificador: any;
-
   @Input('tamanhoReticulado')
   tamanhoReticulado: any;
-
-
   @Input('espacosDeTempo')
   espacosDeTempo: any;
-
   @Input('mode')
   mode: any;
+  @Input('isRede')
+  rede?: boolean;
 
   @ViewChild('myCanvas', {
     static: false
   })
   myCanvas: ElementRef < HTMLCanvasElement > ;
   regra: Regra;
-
   @Input()
   numeroRegra: number;
-
   @Input()
   corEnvolvida: string;
   @Output() clicadoCanvas = new EventEmitter < string > ();
-
-
-
   tamanhoCelula = 3;
   public context: CanvasRenderingContext2D;
 
@@ -79,12 +69,17 @@ export class CartaoExperimentoComponent implements OnInit {
     arrayInicial[Math.floor(arrayInicial.length/2)] = 1
 
 
-
+    if(!this.rede)
     this.regra = new Regra(this.tamanhoReticulado, +this.numeroRegra, this.espacosDeTempo,
       arrayInicial
       );
+      else {
+        this.regra = new RedeSmallworld(this.tamanhoReticulado, +this.numeroRegra, this.espacosDeTempo,
+        0.1,arrayInicial,true,2
+        );
 
-
+      }
+      this.regra.exibir()
 
     let ctx = this.myCanvas.nativeElement.getContext('2d');
     ctx.clearRect(0, 0, this.myCanvas.nativeElement.width, this.myCanvas.nativeElement.height);

@@ -11,6 +11,7 @@ import * as PIXI from 'pixi.js/dist/pixi.min.js'
 import { CartaoExperimentoComponent } from './cartao-experimento/cartao-experimento.component';
 import { ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RedeSmallworld } from '../core/classes/RedeSmallWorld';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class HomeComponent implements OnInit {
 
   modo = 1;
-
   numerosDeRegra = [];
   inputTamanhoReticulado=100;
   inputEspacosDeTempo = 50;
@@ -30,9 +30,9 @@ export class HomeComponent implements OnInit {
   activeTab = "Comparação";
 
   tabs = [
+    {nome:"Relatórios",label:{width: "30px",left: "163px"}, active:false},
     {nome:"Comparação",label:{width: "75px",left: "7px"}, active:true},
     {nome:"Inspeção",label:{width: "55px",left: "95px"}, active:false},
-    {nome:"Teste",label:{width: "30px",left: "163px"}, active:false},
 
   ]
 
@@ -183,5 +183,6 @@ set inputRegra(newValue : number) {
 
 
   ngOnInit(): void {
+
   }
 }
