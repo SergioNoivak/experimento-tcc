@@ -91,7 +91,7 @@ export class HomeComponent implements OnInit {
     switch (aba) {
       case "Comparação":
         this.aptoEditar = false;
-        this.numerosDeRegra = [144, 144, 144, 144, 144, 144, 193, 193, 193, 193, 193, 193]
+        this.numerosDeRegra = [this.regraFixa, this.regraFixa, this.regraFixa, this.regraFixa, this.regraFixa, this.regraFixa, this.regraFixa, this.regraFixa, this.regraFixa, this.regraFixa, this.regraFixa, this.regraFixa]
         this.modo = 1;
 
         break;
@@ -133,19 +133,11 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private fb: FormBuilder) {
 
 
+
     for (let i = 0; i < 6; i++) {
-
-
-      let reticulado = new Array(this.inputTamanhoReticulado);
-      reticulado.forEach(element => {
-        element = true;
-      });
-
-      this.checkboxReticulado.push(reticulado);
-
-
+      this.checkboxReticulado.push(configuracoesReticulados.default[i]);
     }
-
+    console.log(this.checkboxReticulado)
 
     this.formRegraFixa = fb.group({
       // Adding the "myNum" input to our FormGroup along with its min-max Validators.

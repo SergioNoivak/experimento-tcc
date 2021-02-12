@@ -126,17 +126,25 @@
         <span aria-hidden="true">&times;</span>
       </a>
       <div >
+
+
         <div style="display:flex; justify-content: center;">
 
           <div style="display: grid; grid-template-columns: repeat(2,160px);grid-template-rows: repeat(3,140px);" >
 
-            <div  *ngFor="let linha of checkboxReticulado">
+            <div   *ngFor="let linha of checkboxReticulado" style="display: flex; justify-content: center; align-self: center;" >
               <div style="display: grid; grid-template-columns: repeat(10,13px);grid-template-rows: repeat(10,13px);">
-                <input *ngFor="let reticulado of linha" type="checkbox" id="checkbox-1" value="">
+                <input [checked]="reticulado==1?'checked':''" *ngFor="let reticulado of linha" type="checkbox" id="checkbox-1" >
               </div>
 
             </div>
           </div>
+
+        </div>
+        <div style="display:flex; justify-content: space-around; align-self: center; padding-left: 40%; padding-right: 40%; margin-top: 100px;">
+              <button class="btn btn-danger" type="button">Cancelar</button>
+              <button class="btn btn-primary" type="button">Ok</button>
+
         </div>
       </div>
     </div>
