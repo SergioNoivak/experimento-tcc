@@ -1,5 +1,4 @@
-import { stderr, stdout } from "process";
-import { AnyARecord } from "dns";
+
 
 export class Regra{
   tamanhoReticulado:number;

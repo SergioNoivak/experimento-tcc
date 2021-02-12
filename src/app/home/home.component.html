@@ -3,15 +3,9 @@
 
   <div  class="menuSuperior1" style="display:flex; justify-content: center;">
     <div class="spectrum-Tabs spectrum-Tabs--horizontal spectrum-Tabs--compact" style="display: flex; width: 200px;">
-
-
-
       <div (click)="mudarAba(item)" *ngFor="let item of tabs" style="flex-grow: 1; justify-content: space-between;" class="spectrum-Tabs-item " [ngClass]="{'is-selected': item.active}" tabindex="0">
         <span class="spectrum-Tabs-itemLabel">{{item.nome}}</span>
       </div>
-
-
-
       <div  *ngFor="let item of tabs" class="spectrum-Tabs-selectionIndicator" [ngStyle]="{'width': item.label.width,'left': item.label.left, 'visibility':item.active?'inherit':'hidden'}"></div>
     </div>
 
@@ -25,8 +19,18 @@
     <input *ngIf="modo==2" style="width:20%; height: 22px; overflow: hidden;" type="number" placeholder="" name="field" value="" class="form-control" >
   </div>
   <div  class="cartao2" appIsRegra >
-Rede de Autômato Celular
-<input *ngIf="modo==2" style="width:20%; height: 22px; overflow: hidden;" type="number" placeholder="" name="field" value="" class="form-control" >
+
+    Rede de Autômato Celular
+
+    <select [(ngModel)]="redeSmallWorld" (change)="mudarRedeSmallWorld($event.target.value)" style="height: 22px; overflow: hidden;" class="form-control form-control-sm" id="select-4">
+      <option value="" selected="selected" disabled="disabled">Selecione uma rede</option>
+        <option value="1">Rede Small world 1</option>
+        <option value="2">Rede Small world 2</option>
+        <option value="3">Rede Small world 3</option>
+        <option value="4">Rede Small world 4</option>
+    </select>
+
+<!-- <input   type="number" placeholder="" name="field" value="" class="form-control" > -->
 </div>
 </div>
 
@@ -49,6 +53,11 @@ Rede de Autômato Celular
     <!-- <input type="number"  (ngModelChange)="repintarRegra($event)" [(ngModel)]="inputRegra" class="form-control" placeholder="Text input"> -->
 </div>
 </div>
+
+<label for="">Quadro selecionado</label>
+<input [(ngModel)]="clicadoIdCanvas" type="text" class="form-control form-control-lg" placeholder="Text input">
+
+
 <div class="spectrum-Slider" style="margin-top: 30px;">
   <div class="spectrum-Slider-labelContainer">
     <label class="spectrum-Slider-label" id="spectrum-Slider-label-8" for="spectrum-Slider-input-8">Tamanho<br> Reticulado</label>
@@ -151,21 +160,21 @@ Rede de Autômato Celular
 
 
   <div class="gridExperimentos">
-    <app-cartao-experimento [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[0]" [identificador]="'1'"></app-cartao-experimento>
-    <app-cartao-experimento [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[1]" [identificador]="'2'"></app-cartao-experimento>
-    <app-cartao-experimento [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[2]" [identificador]="'3'"></app-cartao-experimento>
-    <app-cartao-experimento [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[3]" [identificador]="'4'"></app-cartao-experimento>
-    <app-cartao-experimento [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[4]" [identificador]="'5'"></app-cartao-experimento>
-    <app-cartao-experimento [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[5]" [identificador]="'6'"></app-cartao-experimento>
+    <app-cartao-experimento [configuracaoReticulado]="configuracoesReticulado[0]" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[0]" [identificador]="'1'"></app-cartao-experimento>
+    <app-cartao-experimento [configuracaoReticulado]="configuracoesReticulado[1]" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[1]" [identificador]="'2'"></app-cartao-experimento>
+    <app-cartao-experimento [configuracaoReticulado]="configuracoesReticulado[2]" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[2]" [identificador]="'3'"></app-cartao-experimento>
+    <app-cartao-experimento [configuracaoReticulado]="configuracoesReticulado[3]" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[3]" [identificador]="'4'"></app-cartao-experimento>
+    <app-cartao-experimento [configuracaoReticulado]="configuracoesReticulado[4]" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[4]" [identificador]="'5'"></app-cartao-experimento>
+    <app-cartao-experimento [configuracaoReticulado]="configuracoesReticulado[5]" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[5]" [identificador]="'6'"></app-cartao-experimento>
 
   </div>
   <div class="gridExperimentos" >
-    <app-cartao-experimento [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado"  (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[6]" [identificador]="'7'"></app-cartao-experimento>
-    <app-cartao-experimento [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[7]" [identificador]="'8'"></app-cartao-experimento>
-    <app-cartao-experimento [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[8]" [identificador]="'9'"></app-cartao-experimento>
-    <app-cartao-experimento [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[9]" [identificador]="'10'"></app-cartao-experimento>
-    <app-cartao-experimento [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[10]" [identificador]="'11'"></app-cartao-experimento>
-    <app-cartao-experimento [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[11]" [identificador]="'12'"></app-cartao-experimento>
+    <app-cartao-experimento #rede7    [configuracaoReticulado]="configuracoesReticulado[0]" [redeEnvolvida]="redeSmallWorld" [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado"  (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[6]" [identificador]="'7'"></app-cartao-experimento>
+    <app-cartao-experimento #rede8    [configuracaoReticulado]="configuracoesReticulado[1]" [redeEnvolvida]="redeSmallWorld" [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[7]" [identificador]="'8'"></app-cartao-experimento>
+    <app-cartao-experimento #rede9    [configuracaoReticulado]="configuracoesReticulado[2]" [redeEnvolvida]="redeSmallWorld" [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[8]" [identificador]="'9'"></app-cartao-experimento>
+    <app-cartao-experimento #rede10   [configuracaoReticulado]="configuracoesReticulado[3]" [redeEnvolvida]="redeSmallWorld" [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[9]" [identificador]="'10'"></app-cartao-experimento>
+    <app-cartao-experimento #rede11   [configuracaoReticulado]="configuracoesReticulado[4]" [redeEnvolvida]="redeSmallWorld" [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[10]" [identificador]="'11'"></app-cartao-experimento>
+    <app-cartao-experimento #rede12   [configuracaoReticulado]="configuracoesReticulado[5]" [redeEnvolvida]="redeSmallWorld" [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[11]" [identificador]="'12'"></app-cartao-experimento>
 
   </div>
 </div>

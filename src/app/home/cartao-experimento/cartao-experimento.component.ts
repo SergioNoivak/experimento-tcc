@@ -8,7 +8,7 @@ import {
   EventEmitter
 } from '@angular/core';
 import {Regra} from '../../core/classes/Regra';
-import {RedeSmallworld} from '../../core/classes/RedeSmallworld';
+import {Rede} from '../../core/classes/Rede';
 
 
 @Component({
@@ -19,6 +19,8 @@ import {RedeSmallworld} from '../../core/classes/RedeSmallworld';
 export class CartaoExperimentoComponent implements OnInit {
   tamanho: any = new Array(400)
   tamanho2: any = new Array(40)
+
+
   @Input('identificador')
   identificador: any;
   @Input('tamanhoReticulado')
@@ -29,7 +31,12 @@ export class CartaoExperimentoComponent implements OnInit {
   mode: any;
   @Input('isRede')
   rede?: boolean;
+  @Input('redeEnvolvida')
+  redeEnvolvida?: number;
 
+
+  @Input('configuracaoReticulado')
+  configuracaoReticulado?: any;
   @ViewChild('myCanvas', {
     static: false
   })
@@ -63,19 +70,22 @@ export class CartaoExperimentoComponent implements OnInit {
 
   pintar(){
 
-    let arrayInicial = new Array(this.tamanhoReticulado);
-    for (let i = 0; i < arrayInicial.length; i++)
+    if(this.configuracaoReticulado == undefined){
+      this.configuracaoReticulado = new Array(100)
+      let arrayInicial = this.configuracaoReticulado;
+      for (let i = 0; i < arrayInicial.length; i++)
       arrayInicial[i]=0
-    arrayInicial[Math.floor(arrayInicial.length/2)] = 1
-
+      arrayInicial[Math.floor(arrayInicial.length/2)] = 1
+      // console.log(arrayInicial)
+    }
 
     if(!this.rede)
     this.regra = new Regra(this.tamanhoReticulado, +this.numeroRegra, this.espacosDeTempo,
-      arrayInicial
+      this.configuracaoReticulado
       );
       else {
-        this.regra = new RedeSmallworld(this.tamanhoReticulado, +this.numeroRegra, this.espacosDeTempo,
-        0.1,arrayInicial,true,2
+        this.regra = new Rede(this.tamanhoReticulado, +this.numeroRegra, this.espacosDeTempo,
+        0.1,this.configuracaoReticulado,true,this.redeEnvolvida
         );
 
       }

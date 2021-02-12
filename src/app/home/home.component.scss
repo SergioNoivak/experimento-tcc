@@ -53,8 +53,8 @@
   background-color:  rgb(53,250,0,0.2);
   text-align: center; padding-top: 4px;
   color: rgba(255, 255, 255, 0.644);
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: auto auto;
 
 }
 

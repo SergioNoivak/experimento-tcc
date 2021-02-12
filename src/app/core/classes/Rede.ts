@@ -1,7 +1,4 @@
-
-
-export class RedeSmallworld{
-
+export class Rede{
   grafo:Array<any>;
   p:number
   tamanhoReticulado:number;
@@ -13,7 +10,6 @@ export class RedeSmallworld{
   vetoresDiagrama:Array<any>;
   espacosDeTempo:number;
   constructor(tamanhoReticulado:number,tamanhoRegra:number,espacosDeTempo:number,p:number,configuracaoInicial?:Array<number>,isFixa?:boolean,numeroRede?:number){
-
     this.p = p
     this.espacosDeTempo = espacosDeTempo;
     this.tamanhoReticulado = tamanhoReticulado;

@@ -8,7 +8,9 @@
   },
   "include": [
     "main.ts",
-    "polyfill.ts"
+    "polyfill.ts",
+    "src/**/*.d.ts",
+    "src/**/*.ts"
   ],
   "exclude": [
     "**/*.spec.ts"

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RedeSmallworld } from '../../core/classes/RedeSmallWorld';
+import { Rede} from '../../core/classes/Rede';
 
 @Component({
   selector: 'app-relatorios',
@@ -10,7 +10,7 @@ export class RelatoriosComponent implements OnInit {
 
   constructor() {
 
-    let rede = new RedeSmallworld(100,3,15,0.1,new Array(100))
+    let rede = new Rede(100,3,15,0.1,new Array(100))
     console.log(rede)
   }
 
