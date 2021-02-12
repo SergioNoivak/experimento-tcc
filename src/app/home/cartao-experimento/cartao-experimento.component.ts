@@ -5,7 +5,8 @@ import {
   ElementRef,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  SimpleChanges
 } from '@angular/core';
 import {Regra} from '../../core/classes/Regra';
 import {Rede} from '../../core/classes/Rede';
@@ -32,7 +33,7 @@ export class CartaoExperimentoComponent implements OnInit {
   @Input('isRede')
   rede?: boolean;
   @Input('redeEnvolvida')
-  redeEnvolvida?: number;
+  redeEnvolvida?: any;
 
 
   @Input('configuracaoReticulado')
@@ -85,11 +86,11 @@ export class CartaoExperimentoComponent implements OnInit {
       );
       else {
         this.regra = new Rede(this.tamanhoReticulado, +this.numeroRegra, this.espacosDeTempo,
-        0.1,this.configuracaoReticulado,true,this.redeEnvolvida
+        0.1,this.configuracaoReticulado,true,+this.redeEnvolvida
         );
 
       }
-      this.regra.exibir()
+      // this.regra.exibir()
 
     let ctx = this.myCanvas.nativeElement.getContext('2d');
     ctx.clearRect(0, 0, this.myCanvas.nativeElement.width, this.myCanvas.nativeElement.height);
@@ -107,6 +108,18 @@ export class CartaoExperimentoComponent implements OnInit {
   getv() {
     return Math.random() > 0.5
 
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+
+    if(changes.redeEnvolvida!=undefined){
+      if(changes.redeEnvolvida.firstChange==false){
+        if(changes.redeEnvolvida.currentValue!=undefined)
+        this.pintar()
+      }
+
+    }
+    // console.log(changes.redeEnvolvida)
   }
 
 }

@@ -147,7 +147,6 @@ criarSmallWorld(isFixa?:boolean,numeroRede?:number){
     }
 
   }
-  console.log(this)
 }
 
 }

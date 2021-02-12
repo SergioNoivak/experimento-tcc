@@ -31,7 +31,7 @@ import * as configuracoesReticulados from "./../core/classes/configuracoesReticu
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  redeSmallWorld = 2;
+  redeSmallWorld = "2";
   modo = 1;
   numerosDeRegra = [];
   configuracoesReticulado =configuracoesReticulados.default;
@@ -196,7 +196,7 @@ export class HomeComponent implements OnInit {
   }
   mudarInputRegra(valorRecebido) {
     valorRecebido = JSON.parse(valorRecebido)
-    console.log(valorRecebido)
+    // console.log(valorRecebido)
     this.inputRegra = +valorRecebido["numeroRegra"];
     this.clicadoIdCanvas = +valorRecebido["id"]
     this.aptoEditar = true;
@@ -204,15 +204,12 @@ export class HomeComponent implements OnInit {
   }
 
   repintarRegra(elemento) {
-    console.log("12345")
 
     switch (this.modo) {
       case 1:
         this.experimentos.forEach(experimento => {
-
           this.numerosDeRegra[this.clicadoIdCanvas - 1] = +elemento
           experimento.numeroRegra = +elemento
-
           experimento.pintar()
 
         });
@@ -239,23 +236,11 @@ export class HomeComponent implements OnInit {
 
 
   mudarRedeSmallWorld(novaRede){
-
-    this.redeSmallWorld = +novaRede
-    // for (let i = 7; i <= 12; i++) {
-    //   console.log(this.experimentos[i])
-
-    // }
-    this.experimentos.forEach(experimento => {
-
-      experimento.pintar()
-    });
-
-
+    this.redeSmallWorld = novaRede
   }
 
 
   ngOnInit(): void {
-    console.log(this.configuracoesReticulado)
 
   }
 }
